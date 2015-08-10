@@ -1,18 +1,24 @@
- Copyright (c) 2015 University of Utah Student Computing Labs.
- All Rights Reserved.
+#802.1x Reconnect
+========================
 
- Permission to use, copy, modify, and distribute this software and
- its documentation for any purpose and without fee is hereby granted,
- provided that the above copyright notice appears in all copies and
- that both that copyright notice and this permission notice appear
- in supporting documentation, and that the name of The University
- of Utah not be used in advertising or publicity pertaining to
- distribution of the software without specific, written prior
- permission. This software is supplied as is without expressed or
- implied warranties of any kind.
+This script attempts to address an issue with Mac OS X "Yosemite" 10.10+ and 802.1X connections dropping.
+## Contents
 
-802.1x Reconnect
+* [Download](#download) - get the script
+* [Contact](#contact) - how to reach us
+* [Purpose](#purpose) - what is this script for?
+* [Usage](#usage) - details of invocation
 
-This application attempts to address an issue with Mac OS X "Yosemite" 10.10+ and 802.1X connections dropping.
+## Download
 
-On launch it will open the System Preferences panel, navigate to the Network pane, find the Wi-Fi section and click the 802.1X connect button. Exiting if already connected.
+[Download the latest version of 802.1x Reconnect here!](../../releases/)
+
+
+## Contact
+
+If you have any comments, questions, or other input, either [file an issue](../../issues) or [send an email to us](mailto:mlib-its-mac-github@lists.utah.edu). Thanks!
+
+## Purpose
+
+
+## Usage
