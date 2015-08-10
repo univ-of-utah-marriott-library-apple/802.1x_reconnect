@@ -23,7 +23,7 @@ In Mac OS X 10.10 "Yosemite" there exists an issue where an 802.1x connection wi
 
 The most direct workaround we have found is to manually click the `Connect` button in the Wi-Fi pane of the Network System Preference. This script automates these actions for the user.
 
-<a name="myfootnote1"></a>https://jamfnation.jamfsoftware.com/30.0b6/discussion.html?id=14693
+<a name="myfootnote1"></a>https://jamfnation.jamfsoftware.com/30.0b6/discussion.html?id=14693<br>
 <a name="myfootnote2"></a>https://groups.google.com/forum/#!topic/macenterprise/74PiO9hrve4
 
 ## Usage
