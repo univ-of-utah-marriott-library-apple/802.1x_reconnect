@@ -14,9 +14,9 @@
 -- ##########################################
 
 -- ##########################################
--- # click to UConnect
+-- # 802.1x Reconnect
 -- #
--- # This application attempts to address an issue with Mac OS X "Yosemite" 10.10+ and 802.1X connections dropping.
+-- # This script attempts to address an issue with Mac OS X "Yosemite" 10.10+ and 802.1X connections dropping.
 -- #
 -- # On launch it will open the System Preferences panel, navigate to the Network pane, find the Wi-Fi section and click the 802.1X connect button. Exiting if already connected.
 -- #
