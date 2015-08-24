@@ -20,6 +20,8 @@
 -- #
 -- # On launch it will open the System Preferences panel, navigate to the Network pane, find the Wi-Fi section and click the 802.1X connect button. Exiting if already connected.
 -- #
+-- # If you use this script as an application, you will need to add it to System Preferences:Security & Privacy:Accessibility to operate correctly.
+-- #
 -- #	0.1.0	2015.08.05	Initial version. tjm
 -- #
 -- #
@@ -52,14 +54,14 @@ tell application "System Events"
 			end repeat
 			--select the column item when found
 			select row (x - 1) of table 1 of scroll area 1
-
+			
 			-- Don't click if already connected!
 			set buttonLabel to (get title of button 2 of group 1) as string
 			if buttonLabel is not equal to "Disconnect" then
 				-- click the button!
 				click button 2 of group 1
 			end if
-
+			
 		end tell
 	end tell
 end tell

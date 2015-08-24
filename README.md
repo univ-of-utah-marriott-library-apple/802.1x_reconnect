@@ -27,4 +27,10 @@ The most direct workaround we have found is to manually click the `Connect` butt
 <a name="myfootnote2"></a>https://groups.google.com/forum/#!topic/macenterprise/74PiO9hrve4
 
 ## Usage
+Depending on how you make use of the parts of this project, you will need to add them to the `Privacy` portion of the `Accessibility` pane of `Security & Privacy` in `System Preferences`. This is required for scripts to modify the users UI.
+
 Our suggested usage is to make this script available to the user in a convenient location for them, ie the dock. Saving the script as an Application allows for locally customizing the app's icon, etc.
+
+I've included the genericized pieces of our automated solution. We use crankd to detect changes in Wi-fi and launch a script to check for additional conditions before launching the AppleScript.
+
+
