@@ -31,6 +31,6 @@ Depending on how you make use of the parts of this project, you will need to add
 
 Our suggested usage is to make this script available to the user in a convenient location for them, ie the dock. Saving the script as an Application allows for locally customizing the app's icon, etc.
 
-I've included the genericized pieces of our automated solution. We use crankd to detect changes in Wi-fi and launch a script to check for additional conditions before launching the AppleScript.
+I've included the genericized pieces of our automated solution. We use [crankd](https://github.com/MacSysadmin/pymacadmin) to detect changes in Wi-Fi and launch a script to check for additional conditions before launching the AppleScript.
 
 
