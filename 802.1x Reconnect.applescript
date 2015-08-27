@@ -22,8 +22,8 @@
 -- #
 -- # If you use this script as an application, you will need to add it to System Preferences:Security & Privacy:Accessibility to operate correctly.
 -- #
--- #	0.1.0	2015.08.05	Initial version. tjm
--- #
+-- # 0.1.0	2015.08.05	Initial version. tjm
+-- # 0.1.1	2015.08.27	Added additional error checking and notification. tjm
 -- #
 -- ##########################################
 
@@ -34,6 +34,8 @@
 -- #
 -- #
 -- ##########################################
+
+display notification "Please wait." with title "Preferred network offline, reconnecting..."
 
 tell application "System Preferences"
 	-- open System Preferences and find Network panel
@@ -55,8 +57,27 @@ tell application "System Events"
 			--select the column item when found
 			select row (x - 1) of table 1 of scroll area 1
 			
+			-- If script launched on non-WiFi equipped box, clean up and exit.		
+			if headline is not equal to "Wi" then
+				try
+					tell application "System Preferences" to quit
+				end try
+				
+				return
+			end if
+			
+			-- If not configured for 802.1x, clean up and exit.
+			try
+				set buttonLabel to (get title of button 2 of group 1) as string
+			on error
+				try
+					tell application "System Preferences" to quit
+				end try
+				
+				return
+			end try
+			
 			-- Don't click if already connected!
-			set buttonLabel to (get title of button 2 of group 1) as string
 			if buttonLabel is not equal to "Disconnect" then
 				-- click the button!
 				click button 2 of group 1
