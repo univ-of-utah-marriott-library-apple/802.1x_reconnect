@@ -54,8 +54,6 @@ tell application "System Events"
 				set headline to (first word of (get value of static text 1 of row x of table 1 of scroll area 1)) as string
 				set x to x + 1
 			end repeat
-			--select the column item when found
-			select row (x - 1) of table 1 of scroll area 1
 			
 			-- If script launched on non-WiFi equipped box, clean up and exit.		
 			if headline is not equal to "Wi" then
@@ -64,7 +62,10 @@ tell application "System Events"
 				end try
 				
 				return
-			end if
+			end if	
+			
+			--select the column item when found
+			select row (x - 1) of table 1 of scroll area 1
 			
 			-- If not configured for 802.1x, clean up and exit.
 			try
