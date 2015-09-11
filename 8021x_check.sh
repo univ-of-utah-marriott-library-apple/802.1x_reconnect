@@ -28,6 +28,7 @@
 # System Preferences:Security & Privacy:Accessibility for the script to operate correctly.
 #
 #	0.1.0	2015.08.24	Initial version. tjm
+#	0.1.1	2015.09.11	Addressed an issue with crankd opening an extra system prefs. tjm
 #
 #
 ##########################################
@@ -84,7 +85,7 @@ fi
 macUser=$(/usr/bin/users | /usr/bin/grep "Admin user")
 if /bin/test $? -eq 0
 then
-	echo "bail out, mac user logged in. $(date)"
+	echo "bail out, admin user logged in. $(date)"
 	rm $redflag
 	exit 1
 fi
@@ -92,7 +93,6 @@ fi
 # check if Finder running.
 # bail out if not
 finderUp=$(/usr/bin/pgrep Finder)
-#/usr/bin/pgrep Finder
 if /bin/test $? -eq 1
 then
 	echo "bail out, Finder not running. $(date)"
@@ -105,9 +105,13 @@ fi
 prefsUp=$(/usr/bin/pgrep "System Preferences")
 if /bin/test $? -eq 0
 then
-	echo "bail out, System Preferences already running. $(date)"
-	rm $redflag
-	exit 1
+	theFrontmostApp=$(/usr/bin/osascript -e 'tell application "System Events" to set FrontAppName to name of first process where frontmost is true' -e 'return FrontAppName')
+	if /bin/test "$XtheFrontmostApp" = "XSystem Preferences"
+	then
+		echo "bail out, System Preferences is frontmost, in use? $(date)"
+		rm $redflag
+		exit 1
+	fi
 fi
 
 # check if wi-fi powered on
@@ -140,6 +144,17 @@ sleep 8
 # normal completion
 # better messages
 # no email
-echo "exiting. $(date)"
+echo "Normal exit. $(date)"
 rm $redflag
+
+prefsUp=$(/usr/bin/pgrep "System Preferences")
+if /bin/test $? -eq 0
+then
+	theFrontmostApp=$(/usr/bin/osascript -e 'tell application "System Events" to set FrontAppName to name of first process where frontmost is true' -e 'return FrontAppName')
+	if /bin/test "$XtheFrontmostApp" != "XSystem Preferences"
+	then
+		/usr/bin/pkill "System Preferences"
+	fi
+fi
+
 exit 0
