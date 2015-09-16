@@ -106,7 +106,7 @@ prefsUp=$(/usr/bin/pgrep "System Preferences")
 if /bin/test $? -eq 0
 then
 	theFrontmostApp=$(/usr/bin/osascript -e 'tell application "System Events" to set FrontAppName to name of first process where frontmost is true' -e 'return FrontAppName')
-	if /bin/test "$XtheFrontmostApp" = "XSystem Preferences"
+	if /bin/test "X$theFrontmostApp" = "XSystem Preferences"
 	then
 		echo "bail out, System Preferences is frontmost, in use? $(date)"
 		rm $redflag
@@ -151,7 +151,7 @@ prefsUp=$(/usr/bin/pgrep "System Preferences")
 if /bin/test $? -eq 0
 then
 	theFrontmostApp=$(/usr/bin/osascript -e 'tell application "System Events" to set FrontAppName to name of first process where frontmost is true' -e 'return FrontAppName')
-	if /bin/test "$XtheFrontmostApp" != "XSystem Preferences"
+	if /bin/test "X$theFrontmostApp" != "XSystem Preferences"
 	then
 		/usr/bin/pkill "System Preferences"
 	fi
